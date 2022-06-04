@@ -31,7 +31,7 @@ async def main_teletips():
             print("Checking...")
             xxx_teletips = f"📈 | **Real-Time Bot Status**\n"
             for bot in BOT_LIST:
-                name = await app.get_entity(bot)
+                name = await app.get_chat(bot)
                 try:
                     yyy_teletips = await app.send_message(bot, "/start")
                     aaa = yyy_teletips.id
