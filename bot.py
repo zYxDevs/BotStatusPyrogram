@@ -68,6 +68,6 @@ async def main_teletips():
             # await asyncio.sleep(6300)
 
 
-app.run_until_complete(main_teletips())
+app.run(main_teletips())
 
 # Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
