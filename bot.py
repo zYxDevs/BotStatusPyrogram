@@ -40,9 +40,7 @@ async def main_teletips():
                     async for ccc in zzz_teletips:
                         bbb = ccc.id
                     if aaa == bbb:
-                        xxx_teletips += (
-                            f"• ❌ [{name.first_name}](https://t.me/{bot})\n"
-                        )
+                        xxx_teletips += f"• ❌ [{name.first_name}](https://t.me/{bot})\n"
                         for bot_admin_id in BOT_ADMIN_IDS:
                             try:
                                 await app.send_message(
@@ -53,9 +51,7 @@ async def main_teletips():
                                 pass
                         await app.read_chat_history(bot)
                     else:
-                        xxx_teletips += (
-                            f"• ✅ [{name.first_name}](https://t.me/{bot})\n"
-                        )
+                        xxx_teletips += f"• ✅ [{name.first_name}](https://t.me/{bot})\n"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
@@ -63,7 +59,10 @@ async def main_teletips():
             last_update = time.strftime(f"{TIME_FORMAT}")
             xxx_teletips += f"\n\n**Last checked:**\n__{last_update} ({TIME_ZONE})__\n\n⚡️ **Powered by @Yoga_CIC**"
             return await app.edit_message_text(
-                int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_teletips, disable_web_page_preview=True
+                int(CHANNEL_OR_GROUP_ID),
+                MESSAGE_ID,
+                xxx_teletips,
+                disable_web_page_preview=True,
             )
             # print(f"Last checked on: {last_update}")
             # await asyncio.sleep(6300)
