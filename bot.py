@@ -29,7 +29,7 @@ async def main_teletips():
     async with app:
         while True:
             print("Checking...")
-            xxx_teletips = f"📈 | **Real-Time Bot Status**\n"
+            xxx_teletips = f"📈 | **Real-Time Bot Status**\n\n"
             for bot in BOT_LIST:
                 name = await app.get_chat(bot)
                 try:
@@ -41,7 +41,7 @@ async def main_teletips():
                         bbb = ccc.id
                     if aaa == bbb:
                         xxx_teletips += (
-                            f"\n\n• ❌ [{name.first_name}](https://t.me/{bot})\n"
+                            f"• ❌ [{name.first_name}](https://t.me/{bot})\n"
                         )
                         for bot_admin_id in BOT_ADMIN_IDS:
                             try:
@@ -54,7 +54,7 @@ async def main_teletips():
                         await app.read_chat_history(bot)
                     else:
                         xxx_teletips += (
-                            f"\n\n• ✅ [{name.first_name}](https://t.me/{bot})\n"
+                            f"• ✅ [{name.first_name}](https://t.me/{bot})\n"
                         )
                         await app.read_chat_history(bot)
                 except FloodWait as e:
@@ -63,12 +63,12 @@ async def main_teletips():
             last_update = time.strftime(f"{TIME_FORMAT}")
             xxx_teletips += f"\n\n**Last checked:**\n__{last_update} ({TIME_ZONE})__\n\n⚡️ **Powered by @Yoga_CIC**"
             await app.edit_message_text(
-                int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_teletips
+                int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_teletips, disable_web_page_preview=True
             )
             print(f"Last checked on: {last_update}")
             # await asyncio.sleep(6300)
 
 
-app.run(main_teletips())
+app.run_until_complete(main_teletips())
 
 # Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
