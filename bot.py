@@ -45,7 +45,7 @@ async def main_teletips():
                             try:
                                 await app.send_message(
                                     int(bot_admin_id),
-                                    f"🚨 **Beep! Beep!! @{bot} is down** ❌",
+                                    f"🚨 **@{bot} is down.**",
                                 )
                             except Exception:
                                 pass
