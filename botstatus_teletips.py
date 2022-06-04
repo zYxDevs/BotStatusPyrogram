@@ -25,36 +25,35 @@ BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split('
 
 async def main_teletips():
     async with app:
-            while True:
-                print("Checking...")
-                xxx_teletips = f"📈 | **Real-Time Bot Status**"
-                for bot in BOT_LIST:
-                    try:
-                        yyy_teletips = await app.send_message(bot, "/start")
-                        aaa = yyy_teletips.id
-                        await asyncio.sleep(10)
-                        zzz_teletips = app.get_chat_history(bot, limit = 1)
-                        async for ccc in zzz_teletips:
-                            bbb = ccc.id
-                        if aaa == bbb:
-                            xxx_teletips += f"\n\n🤖  @{bot}\n        └ **Down** ❌"
-                            for bot_admin_id in BOT_ADMIN_IDS:
-                                try:
-                                    await app.send_message(int(bot_admin_id), f"🚨 **Beep! Beep!! @{bot} is down** ❌")
-                                except Exception:
-                                    pass
-                            await app.read_chat_history(bot)
-                        else:
-                            xxx_teletips += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
-                            await app.read_chat_history(bot)
-                    except FloodWait as e:
-                        await asyncio.sleep(e.x)            
-                time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
-                last_update = time.strftime(f"%d %b %Y at %I:%M %p")
-                xxx_teletips += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n<i>♻️ Refreshes automatically</i>"
-                await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_teletips)
-                print(f"Last checked on: {last_update}")                
-                await asyncio.sleep(6300)
+        while True:
+            print("Checking...")
+            xxx_teletips = "📈 | **Real-Time Bot Status**"
+            for bot in BOT_LIST:
+                try:
+                    yyy_teletips = await app.send_message(bot, "/start")
+                    aaa = yyy_teletips.id
+                    await asyncio.sleep(10)
+                    zzz_teletips = app.get_chat_history(bot, limit = 1)
+                    async for ccc in zzz_teletips:
+                        bbb = ccc.id
+                    if aaa == bbb:
+                        xxx_teletips += f"\n\n🤖  @{bot}\n        └ **Down** ❌"
+                        for bot_admin_id in BOT_ADMIN_IDS:
+                            try:
+                                await app.send_message(int(bot_admin_id), f"🚨 **Beep! Beep!! @{bot} is down** ❌")
+                            except Exception:
+                                pass
+                    else:
+                        xxx_teletips += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
+                    await app.read_chat_history(bot)
+                except FloodWait as e:
+                    await asyncio.sleep(e.x)
+            time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
+            last_update = time.strftime("%d %b %Y at %I:%M %p")
+            xxx_teletips += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n<i>♻️ Refreshes automatically</i>"
+            await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_teletips)
+            print(f"Last checked on: {last_update}")
+            await asyncio.sleep(6300)
                         
 app.run(main_teletips())
 
