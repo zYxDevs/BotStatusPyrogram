@@ -58,13 +58,13 @@ async def main_teletips():
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             last_update = time.strftime(f"{TIME_FORMAT}")
             xxx_teletips += f"\n**Last checked:**\n__{last_update} ({TIME_ZONE})__\n\n⚡️ **Powered by @Yoga_CIC**"
+            print(f"Last checked on: {last_update}")
             return await app.edit_message_text(
                 int(CHANNEL_OR_GROUP_ID),
                 MESSAGE_ID,
                 xxx_teletips,
                 disable_web_page_preview=True,
             )
-            print(f"Last checked on: {last_update}")
             # await asyncio.sleep(6300)
 
 
