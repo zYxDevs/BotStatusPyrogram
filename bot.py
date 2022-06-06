@@ -29,7 +29,7 @@ async def main_teletips():
     async with app:
         while True:
             print("Checking...")
-            xxx_teletips = f"📈 | **Real-Time Bot Status**\n\n"
+            xxx_teletips = f"📈 | **zYxDevs Bot Status**\n\n"
             for bot in BOT_LIST:
                 name = await app.get_chat(bot)
                 try:
@@ -57,8 +57,8 @@ async def main_teletips():
                     await asyncio.sleep(e.x)
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             last_update = time.strftime(f"{TIME_FORMAT}")
-            xxx_teletips += f"\n**Last checked:** {last_update} - {TIME_ZONE}\n\n⚡️ **Powered by @Yoga_CIC**"
-            print(f"Last checked on: {last_update}")
+            xxx_teletips += f"\n📶 **Last Checked:** {last_update} - {TIME_ZONE}\n\n⚡️ **Powered by @Yoga_CIC**"
+            print(f"Last Checked on: {last_update}")
             return await app.edit_message_text(
                 int(CHANNEL_OR_GROUP_ID),
                 MESSAGE_ID,
