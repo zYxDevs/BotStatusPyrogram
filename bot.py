@@ -64,7 +64,7 @@ async def main_teletips():
                 xxx_teletips,
                 disable_web_page_preview=True,
             )
-            # print(f"Last checked on: {last_update}")
+            print(f"Last checked on: {last_update}")
             # await asyncio.sleep(6300)
 
 
