@@ -33,5 +33,5 @@ jobs:
           MESSAGE_ID: ${{ secrets.MESSAGE_ID }}
           BOT_ADMIN_IDS: ${{ secrets.BOT_ADMIN_IDS }}
           TIME_ZONE: "Asia/Jakarta"
-          TIME_FORMAT: "%H:%M %d/%m"
+          TIME_FORMAT: "%d/%m %y at %H:%M %p"
           
